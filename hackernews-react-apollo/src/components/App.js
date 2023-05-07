@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import LinkList from './linklist.component';
 import CreateLink from './createlink.component';
 import Header from './header.component';
+import Login from './login.component';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -16,6 +17,7 @@ class App extends Component {
             path="/create"
             element={<CreateLink/>}
           />
+            <Route path="/login" element={<Login/>} />
         </Routes>
       </div>
       </div>;

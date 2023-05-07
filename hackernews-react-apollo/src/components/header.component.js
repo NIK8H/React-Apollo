@@ -1,7 +1,13 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { Link, useNavigate } from 'react-router-dom';
+import { AUTH_TOKEN, USERNAME } from '../constants';
 
 const Header = () => {
+  const navigate = useNavigate();
+  const authToken = localStorage.getItem(AUTH_TOKEN);
+  const username = localStorage.getItem(USERNAME);
+
   return (
     <div className="flex pa1 justify-between nowrap orange">
       <div className="flex flex-fixed black">
@@ -19,7 +25,29 @@ const Header = () => {
           submit
         </Link>
       </div>
+      <div className="flex flex-fixed">
+        {authToken ? (
+          <div
+            className="ml1 pointer black"
+            onClick={() => {
+              localStorage.removeItem(AUTH_TOKEN);
+              navigate(`/`);
+            }}
+          >
+            {username} <t/> 
+            logout
+          </div>
+        ) : (
+          <Link
+            to="/login"
+            className="ml1 no-underline black"
+          >
+            login
+          </Link>
+        )}
+      </div>
     </div>
+    
   );
 };
 
