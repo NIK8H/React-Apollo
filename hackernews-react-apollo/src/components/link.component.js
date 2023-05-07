@@ -72,10 +72,12 @@ const Link = (props) => {
             });
           }
         });
-  
+    const favicon = "https://s2.googleusercontent.com/s2/favicons?domain=" +link.url
+
     return (
       <div className="flex mt2 items-start">
         <div className="flex items-center">
+            
           <span className="gray">{props.index + 1}.</span>
           {authToken && (
             <div
@@ -87,9 +89,15 @@ const Link = (props) => {
             </div>
           )}
         </div>
+        
         <div className="ml1">
+            
           <div>
-            {link.description} ({link.url})
+            <b>{link.description} </b>
+            <br/>
+            <img src={favicon}></img>&nbsp;
+            
+            <a href={link.url} target='_blank'>{link.url}</a>
           </div>
           {(
             <div className="f6 lh-copy gray">
@@ -98,6 +106,7 @@ const Link = (props) => {
               {timeDifferenceForDate(link.createdAt)}
             </div>
           )}
+          <br/>
         </div>
       </div>
     );
