@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { useMutation, gql } from "@apollo/client";
-import { useNavigate } from 'react-router-dom';
-import { FEED_QUERY } from '../components/linklist.component';
+import { useNavigate } from "react-router-dom";
+import { FEED_QUERY } from "../components/linklist.component";
+import { AUTH_TOKEN, LINKS_PER_PAGE } from "../constants";
+
+const take = LINKS_PER_PAGE;
+const skip = 0;
+const orderBy = { createdAt: "desc" };
 
 const CREATE_LINK_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {
@@ -30,18 +35,28 @@ const CreateLink = () => {
     update: (cache, { data: { post } }) => {
       const data = cache.readQuery({
         query: FEED_QUERY,
+        variables: {
+          take,
+          skip,
+          orderBy,
+        },
       });
 
       cache.writeQuery({
         query: FEED_QUERY,
         data: {
           feed: {
-            links: [post, ...data.feed.links]
-          }
+            links: [post, ...data.feed.links],
+          },
+        },
+        variables: {
+          take,
+          skip,
+          orderBy,
         },
       });
     },
-    onCompleted: () => navigate("/")
+    onCompleted: () => navigate("/"),
   });
 
   return (
