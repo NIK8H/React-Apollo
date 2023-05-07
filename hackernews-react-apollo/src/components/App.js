@@ -3,6 +3,7 @@ import LinkList from './linklist.component';
 import CreateLink from './createlink.component';
 import Header from './header.component';
 import Login from './login.component';
+import Search from './search.component';
 
 import { Route, Routes } from 'react-router-dom';
 
@@ -18,6 +19,7 @@ class App extends Component {
             element={<CreateLink/>}
           />
             <Route path="/login" element={<Login/>} />
+            <Route path="/search"element={<Search/>}/>
         </Routes>
       </div>
       </div>;

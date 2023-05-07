@@ -65,7 +65,7 @@ const Link = (props) => {
             <div
               className="ml1 gray f11"
               style={{ cursor: 'pointer' }}
-              onClick={() => {console.log("Clicked vote button")}}
+              onClick={vote}
             >
               ▲
             </div>
