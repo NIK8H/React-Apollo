@@ -6,7 +6,6 @@ import { AUTH_TOKEN, USERNAME } from "../constants";
 const Header = () => {
   const navigate = useNavigate();
   const authToken = localStorage.getItem(AUTH_TOKEN);
-  const username = localStorage.getItem(USERNAME);
 
   return (
     <div className="flex pa1 justify-between nowrap orange">
@@ -15,7 +14,7 @@ const Header = () => {
           <div className="fw7 mr1">Hacker News</div>
         </Link>
         <Link to="/" className="ml1 no-underline black">
-          Home
+          new
         </Link>
         <div className="ml1">|</div>
         <Link to="/top" className="ml1 no-underline black">
@@ -24,7 +23,7 @@ const Header = () => {
 
         <div className="ml1">|</div>
         <Link to="/create" className="ml1 no-underline black">
-          Create link
+          submit
         </Link>
         <div className="ml1">|</div>
         <Link to="/search" className="ml1 no-underline black">
@@ -40,7 +39,6 @@ const Header = () => {
               navigate(`/`);
             }}
           >
-            {username} <t />
             logout
           </div>
         ) : (

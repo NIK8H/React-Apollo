@@ -94,10 +94,7 @@ const Link = (props) => {
             
           <div>
             <b>{link.description} </b>
-            <br/>
-            <img src={favicon}></img>&nbsp;
-            
-            <a href={link.url} target='_blank'>{link.url}</a>
+            <br/>({link.url})
           </div>
           {(
             <div className="f6 lh-copy gray">

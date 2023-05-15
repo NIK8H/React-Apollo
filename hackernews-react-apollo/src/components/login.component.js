@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMutation, gql } from '@apollo/client';
-import { USERNAME, AUTH_TOKEN } from '../constants';
+import {  AUTH_TOKEN } from '../constants';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,8 +52,6 @@ const [login] = useMutation(LOGIN_MUTATION, {
     },
     onCompleted: ({ login }) => {
       localStorage.setItem(AUTH_TOKEN, login.token);
-      console.log(login);
-      localStorage.setItem(USERNAME, login.user.email);
       navigate('/');
       
     }
